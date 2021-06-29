@@ -1,7 +1,5 @@
 # useForm
 
-## Usage
-
 ```tsx
 import * as React from "react";
 import { useForm } from "@/hooks/useForm";
