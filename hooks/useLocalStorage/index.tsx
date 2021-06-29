@@ -1,18 +1,18 @@
 import * as React from 'react';
 
-export const useLocalStorage = (
+export function useLocalStorage(
         key: string,
-        defaulValue: () => void | string,
+        initialValue: string,
         {
             serialize = JSON.stringify,
             deserialize = JSON.parse,
         } = {}
-    ) => {
+    ) {
     const [state, setState] = React.useState(() => {
         const valueInLocalStorage = window.localStorage.getItem(key);
 
         if (valueInLocalStorage) return deserialize(valueInLocalStorage);
-        return typeof defaulValue === 'function' ? defaulValue() : defaulValue;
+        return initialValue;
     });
 
     const prevKeyRef = React.useRef(key);
